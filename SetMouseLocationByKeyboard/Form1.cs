@@ -9,7 +9,7 @@ using System.Runtime.InteropServices;
 namespace SetMouseLocationByKeyboard
 {
     public partial class Form1 : Form
-{
+    {
         [DllImport("user32")]
         public static extern int SetCursorPos(int x, int y);
 
@@ -21,7 +21,7 @@ namespace SetMouseLocationByKeyboard
         private const uint MOUSEEVENTF_RIGHTUP = 0x10;
 
         private readonly KeyboardHookListener m_KeyboardHookManager;
-        private String m_LastKeyPressed = "";
+        private Keys m_LastKeyPressed = Keys.A;
         private DateTime m_LastKeyPressedTimeStamp = DateTime.Now;
         private Form m_F = null;
         private OverLayDisplay m_Display = null;
@@ -33,6 +33,7 @@ namespace SetMouseLocationByKeyboard
             m_KeyboardHookManager = new KeyboardHookListener(new GlobalHooker());
             m_KeyboardHookManager.Enabled = true;
             m_KeyboardHookManager.KeyUp += HookManager_KeyUp;
+            m_KeyboardHookManager.KeyDown += HookManager_KeyDown;
 
             colorDialog1.Color = Color.Red;
             button1.ForeColor = colorDialog1.Color;
@@ -41,50 +42,138 @@ namespace SetMouseLocationByKeyboard
         }
 
 
-        //##################################################################
-        #region Event handlers of particular events. They will be activated when an appropriate checkbox is checked.
-
-        private void HookManager_KeyUp(object sender, KeyEventArgs e)
+        private void HookManager_KeyDown(object sender, KeyEventArgs e)
         {
             if (m_Display != null)
             {
-                if (e.KeyCode.ToString().Trim()=="D1")
+                if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D2")
+                else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D3")
+                else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D4")
+                else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D5")
+                else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D6")
+                else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D7")
+                else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D8")
+                else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D9")
+                else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="Return")
+                else if (e.KeyCode.ToString().Trim() == "Return")
+                {
+                    e.Handled = true;
+                }
+            }
+            else if (m_F != null)
+            {
+                if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.Return)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
+        private void HookManager_KeyUp(object sender, KeyEventArgs e)
+        {
+            Console.WriteLine(e.KeyCode.ToString());
+            if (m_Display != null)
+            {
+                if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
+                {
+                    e.Handled = true;
+                }
+                else if (e.KeyCode == Keys.Return)
                 {
                     e.Handled = true;
                 }
@@ -96,43 +185,43 @@ namespace SetMouseLocationByKeyboard
             }
             else if (m_F != null)
             {
-                if (e.KeyCode.ToString().Trim()=="D1")
+                if (e.KeyCode == Keys.D1 || e.KeyCode == Keys.NumPad1)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D2")
+                else if (e.KeyCode == Keys.D2 || e.KeyCode == Keys.NumPad2)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D3")
+                else if (e.KeyCode == Keys.D3 || e.KeyCode == Keys.NumPad3)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D4")
+                else if (e.KeyCode == Keys.D4 || e.KeyCode == Keys.NumPad4)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D5")
+                else if (e.KeyCode == Keys.D5 || e.KeyCode == Keys.NumPad5)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D6")
+                else if (e.KeyCode == Keys.D6 || e.KeyCode == Keys.NumPad6)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D7")
+                else if (e.KeyCode == Keys.D7 || e.KeyCode == Keys.NumPad7)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D8")
+                else if (e.KeyCode == Keys.D8 || e.KeyCode == Keys.NumPad8)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="D9")
+                else if (e.KeyCode == Keys.D9 || e.KeyCode == Keys.NumPad9)
                 {
                     e.Handled = true;
                 }
-                else if (e.KeyCode.ToString().Trim()=="Return")
+                else if (e.KeyCode == Keys.Return)
                 {
                     e.Handled = true;
                 }
@@ -144,24 +233,24 @@ namespace SetMouseLocationByKeyboard
                 }
             }
 
-            Process(e.KeyCode.ToString());
+            Process(e.KeyCode);
         }
 
-        private void Process(string text)
+        private void Process(Keys key)
         {
             if (m_Display != null)
             {
                 Screen s = null;
 
-                if (text.Trim()=="D1") { if (Screen.AllScreens.Length >= 0) { s = Screen.AllScreens[0]; } }
-                if (text.Trim()=="D2") { if (Screen.AllScreens.Length >= 1) { s = Screen.AllScreens[1]; } }
-                if (text.Trim()=="D3") { if (Screen.AllScreens.Length >= 2) { s = Screen.AllScreens[2]; } }
-                if (text.Trim()=="D4") { if (Screen.AllScreens.Length >= 3) { s = Screen.AllScreens[3]; } }
-                if (text.Trim()=="D5") { if (Screen.AllScreens.Length >= 4) { s = Screen.AllScreens[4]; } }
-                if (text.Trim()=="D6") { if (Screen.AllScreens.Length >= 5) { s = Screen.AllScreens[5]; } }
-                if (text.Trim()=="D7") { if (Screen.AllScreens.Length >= 6) { s = Screen.AllScreens[6]; } }
-                if (text.Trim()=="D8") { if (Screen.AllScreens.Length >= 7) { s = Screen.AllScreens[7]; } }
-                if (text.Trim()=="D9") { if (Screen.AllScreens.Length >= 8) { s = Screen.AllScreens[8]; } }
+                if (key == Keys.D1 || key == Keys.NumPad1) { if (Screen.AllScreens.Length >= 0) { s = Screen.AllScreens[0]; } }
+                if (key == Keys.D2 || key == Keys.NumPad2) { if (Screen.AllScreens.Length >= 1) { s = Screen.AllScreens[1]; } }
+                if (key == Keys.D3 || key == Keys.NumPad3) { if (Screen.AllScreens.Length >= 2) { s = Screen.AllScreens[2]; } }
+                if (key == Keys.D4 || key == Keys.NumPad4) { if (Screen.AllScreens.Length >= 3) { s = Screen.AllScreens[3]; } }
+                if (key == Keys.D5 || key == Keys.NumPad5) { if (Screen.AllScreens.Length >= 4) { s = Screen.AllScreens[4]; } }
+                if (key == Keys.D6 || key == Keys.NumPad6) { if (Screen.AllScreens.Length >= 5) { s = Screen.AllScreens[5]; } }
+                if (key == Keys.D7 || key == Keys.NumPad7) { if (Screen.AllScreens.Length >= 6) { s = Screen.AllScreens[6]; } }
+                if (key == Keys.D8 || key == Keys.NumPad8) { if (Screen.AllScreens.Length >= 7) { s = Screen.AllScreens[7]; } }
+                if (key == Keys.D9 || key == Keys.NumPad9) { if (Screen.AllScreens.Length >= 8) { s = Screen.AllScreens[8]; } }
 
                 CreateSplash(s.WorkingArea.Location.X, s.WorkingArea.Location.Y, s.WorkingArea.Width, s.WorkingArea.Height);
 
@@ -169,7 +258,7 @@ namespace SetMouseLocationByKeyboard
 
                 m_Display = null;
             }
-            else  if (m_F != null)
+            else if (m_F != null)
             {
                 //Do not use Form width/height below.  Need to use BackgroundImage.Width/Height instead.
                 //
@@ -180,70 +269,70 @@ namespace SetMouseLocationByKeyboard
                 float h2 = m_F.BackgroundImage.Height * (2.0F / 3.0F);
 
 
-                if (text.Trim().EndsWith("D1"))
+                if (key == Keys.D7 || key == Keys.NumPad7)
                 {
                     int x = (int)(v1 / 2.0F);
                     int y = (int)(h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X, m_F.Location.Y, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D2"))
+                else if (key == Keys.D8 || key == Keys.NumPad8)
                 {
                     int x = (int)(v1 + v1 / 2.0F);
                     int y = (int)(h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X + (int)v1, m_F.Location.Y, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D3"))
+                else if (key == Keys.D9 || key == Keys.NumPad9)
                 {
                     int x = (int)(v2 + v1 / 2.0F);
                     int y = (int)(h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X + (int)v2, m_F.Location.Y, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D4"))
+                else if (key == Keys.D4 || key == Keys.NumPad4)
                 {
                     int x = (int)(v1 / 2.0F);
                     int y = (int)(h1 + h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X, m_F.Location.Y + (int)h1, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D5"))
+                else if (key == Keys.D5 || key == Keys.NumPad5)
                 {
                     int x = (int)(v1 + v1 / 2.0F);
                     int y = (int)(h1 + h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X + (int)v1, (int)m_F.Location.Y + (int)h1, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D6"))
+                else if (key == Keys.D6 || key == Keys.NumPad6)
                 {
                     int x = (int)(v2 + v1 / 2.0F);
                     int y = (int)(h1 + h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X + (int)v2, m_F.Location.Y + (int)h1, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D7"))
+                else if (key == Keys.D1 || key == Keys.NumPad1)
                 {
                     int x = (int)(v1 / 2.0F);
                     int y = (int)(h2 + h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X, m_F.Location.Y + (int)h2, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D8"))
+                else if (key == Keys.D2 || key == Keys.NumPad2)
                 {
                     int x = (int)(v1 + v1 / 2.0F);
                     int y = (int)(h2 + h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X + (int)v1, m_F.Location.Y + (int)h2, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("D9"))
+                else if (key == Keys.D3 || key == Keys.NumPad3)
                 {
                     int x = (int)(v2 + v1 / 2.0F);
                     int y = (int)(h2 + h1 / 2.0F);
                     SetCursorPos(m_F.Location.X + x, m_F.Location.Y + y);
                     CreateSplash(m_F.Location.X + (int)v2, m_F.Location.Y + (int)h2, (int)v1, (int)h1);
                 }
-                else if (text.Trim().EndsWith("Return"))
+                else if (key == Keys.Return)
                 {
                     m_F.Close();
                     m_F.Dispose();
@@ -254,9 +343,9 @@ namespace SetMouseLocationByKeyboard
                 }
             }
 
-            if (text.Trim().EndsWith("LControlKey") && m_LastKeyPressed.Trim().EndsWith("LControlKey"))
+            if (key == Keys.LControlKey && m_LastKeyPressed == Keys.LControlKey)
             {
-                m_LastKeyPressed = text;
+                m_LastKeyPressed = key;
 
                 if (DateTime.Compare(m_LastKeyPressedTimeStamp.AddSeconds(1), DateTime.Now) < 0)
                 {
@@ -278,7 +367,7 @@ namespace SetMouseLocationByKeyboard
             }
             else
             {
-                m_LastKeyPressed = text;
+                m_LastKeyPressed = key;
                 m_LastKeyPressedTimeStamp = DateTime.Now;
             }
         }
@@ -287,7 +376,7 @@ namespace SetMouseLocationByKeyboard
         {
             try
             {
-                if (width <= 20 || height <= 20)
+                if (width <= 10 || height <= 10)
                 {
                     return;
                 }
@@ -317,14 +406,14 @@ namespace SetMouseLocationByKeyboard
                     Pen p = new Pen(m_Color);
                     Pen p_border = new Pen(m_Color);
 
-                    int thickness =1;
+                    int thickness = 1;
                     if (comboBox1.SelectedItem.ToString() != null && Int32.TryParse(comboBox1.SelectedItem.ToString(), out thickness))
                     {
-                          
+
                     }
                     p_border.Width = thickness;
-                    p.Width = thickness;                     
-                    
+                    p.Width = thickness;
+
 
                     float v1 = width * (1.0F / 3.0F);
                     float v2 = width * (2.0F / 3.0F);
@@ -365,15 +454,15 @@ namespace SetMouseLocationByKeyboard
 
                     SolidBrush brush = new SolidBrush(m_Color);
 
-                    gfx.DrawString("1", new Font("Tahoma", 10), brush, new RectangleF(0, 0, v1, h1), strFormat);
-                    gfx.DrawString("2", new Font("Tahoma", 10), brush, new RectangleF(v1, 0, v1, h1), strFormat);
-                    gfx.DrawString("3", new Font("Tahoma", 10), brush, new RectangleF(v2, 0, v1, h1), strFormat);
+                    gfx.DrawString("7", new Font("Tahoma", 10), brush, new RectangleF(0, 0, v1, h1), strFormat);
+                    gfx.DrawString("8", new Font("Tahoma", 10), brush, new RectangleF(v1, 0, v1, h1), strFormat);
+                    gfx.DrawString("9", new Font("Tahoma", 10), brush, new RectangleF(v2, 0, v1, h1), strFormat);
                     gfx.DrawString("4", new Font("Tahoma", 10), brush, new RectangleF(0, h1, v1, h1), strFormat);
                     gfx.DrawString("5", new Font("Tahoma", 10), brush, new RectangleF(v1, h1, v1, h1), strFormat);
                     gfx.DrawString("6", new Font("Tahoma", 10), brush, new RectangleF(v2, h1, v1, h1), strFormat);
-                    gfx.DrawString("7", new Font("Tahoma", 10), brush, new RectangleF(0, h2, v1, h1), strFormat);
-                    gfx.DrawString("8", new Font("Tahoma", 10), brush, new RectangleF(v1, h2, v1, h1), strFormat);
-                    gfx.DrawString("9", new Font("Tahoma", 10), brush, new RectangleF(v2, h2, v1, h1), strFormat);
+                    gfx.DrawString("1", new Font("Tahoma", 10), brush, new RectangleF(0, h2, v1, h1), strFormat);
+                    gfx.DrawString("2", new Font("Tahoma", 10), brush, new RectangleF(v1, h2, v1, h1), strFormat);
+                    gfx.DrawString("3", new Font("Tahoma", 10), brush, new RectangleF(v2, h2, v1, h1), strFormat);
                 }
 
                 m_F.BackColor = Color.White;
@@ -393,9 +482,7 @@ namespace SetMouseLocationByKeyboard
         {
             mouse_event(MOUSEEVENTF_LEFTDOWN, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.X, 0, (System.UIntPtr)0);
             mouse_event(MOUSEEVENTF_LEFTUP, (uint)System.Windows.Forms.Cursor.Position.X, (uint)System.Windows.Forms.Cursor.Position.X, 0, (System.UIntPtr)0);
-        }       
-
-        #endregion
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
